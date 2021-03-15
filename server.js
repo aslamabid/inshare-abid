@@ -7,9 +7,15 @@ app.use(express.static('public'));
 app.use(express.json());
 // app.use(express.urlencoded({ extended: true }));
 const connectDB = require('./config/db');
-
+const cors = require('cors');
 connectDB();
 
+//cors
+const corsOptions = {
+	origin: ['http://localhost:8080']
+}
+
+app.use(cors(corsOptions));
 //Templates
 app.set('views', path.join(__dirname, '/views'));
 app.set('view engine', 'ejs');
